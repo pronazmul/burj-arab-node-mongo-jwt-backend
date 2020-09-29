@@ -13,12 +13,17 @@ const client = new MongoClient(uri, { useNewUrlParser: true });
 
 client.connect(err => {
   const collection = client.db("burjarab").collection("booking");
-    app.post("/book",(req,res)=>{
-        
-        collection.insertOne(req.body)
-        .then(result=>console.log(result))
 
+    app.post("/book",(req,res)=>{
+        collection.insertOne(req.body)
+        .then(result=>res.send(result.insertedCount>0))
     })
+
+    app.get("/getBooked",(req,res)=>{
+        collection.find({email:req.query.email})
+        .toArray((err, document)=>res.send(document))
+    })
+
 });
 
 
