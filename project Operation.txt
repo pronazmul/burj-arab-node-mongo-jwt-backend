@@ -1,0 +1,57 @@
+Project Installation: 
+
+        Node js: npm init 
+        Express|Mongo|Body-Parser|CORS: npm install express mongodb body-parser cors 
+        Nodemon: npm install nodemon --save-dev
+
+Basic Project Setup: 
+
+    const express = require('express')
+    const app = express()
+    const port = 5000
+
+    app.get('/',(req,res)=>{
+        res.send('Welcome Software Enginner Nazmul Huda')
+    })
+
+    app.listen(port)
+
+MongoDB Configuration:
+      
+    User Name   :   burj-arab
+    Password    :   ghjjNsVguJ5UmRu0
+    DB Name     :   burjarab
+    Collection  :   booking
+
+MongoDB Connection Setup: 
+
+    const MongoClient = require('mongodb').MongoClient
+    const uri = "mongodb+srv://burj-arab:ghjjNsVguJ5UmRu0@cluster0.mx72a.mongodb.net/burjarab?retryWrites=true&w=majority"
+    const client = new MongoClient(uri, { useNewUrlParser: true })
+
+    client.connect(err => {
+    const collection = client.db("burjarab").collection("booking")
+        console.log("Database Connection Successful")
+    client.close();
+    })
+
+Data Sent Request From Frontend:
+
+                    const handleBooking = ()=>{
+                    const  bookingData = {...loggedInUser, ...selectedDate}
+                    fetch('http://localhost:5000/book',{
+                        method:'POST',
+                        headers:{'Content-Type':'application/json'},
+                        body: JSON.stringify(bookingData)
+                    })
+                    .then(res=> res.json())
+                    .then(data=> console.log(data))
+                    }
+
+Frontend Request Receive & Sent to Database: 
+
+
+
+
+
+
