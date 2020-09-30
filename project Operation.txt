@@ -86,5 +86,41 @@ Read Data From Frontend.....
     {new Date(data.checkIn).toDateString('dd/MM/YYY')}
 
 
+Create JWT & Set in session Strage : 
+
+        const handleJwtApi = ()=>{
+        firebase.auth().currentUser.getIdToken(true)
+        .then(idToken=>sessionStorage.setItem('token',idToken))
+        .catch(error =>console.log(error))
+    }
+
+@ Sent JWT By Header Request:
+
+        fetch("http://localhost:5000/getBooked?email="+loggedInUser.email,{
+        method:'GET',
+        headers:{
+                    'Content-Type':'application/json',
+                    authorization:`Bearer${sessionStorage.getItem('token')}`
+                }
+        })
+        .then(res=>res.json())
+        .then(data=> setBookedUser(data))
+
+@ Receive JWT Form Backend....
+
+    app.get("/getBooked",(req,res)=>{
+        console.log(req.headers.authorization)
+        collection.find({email:req.query.email})
+        .toArray((err, document)=>res.send(document))
+    })
+
+
+@ ENV (Environmental Varriable Setup)
+
+command: npm install dotenv
+
+
+
+
 
 
