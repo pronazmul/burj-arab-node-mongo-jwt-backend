@@ -49,23 +49,23 @@ Data Sent Request From Frontend:
                     }
 
 Frontend Request Receive & Sent to Database: 
-    @Required Hooks Imported 
-    const bodyParser = require('body-parser')
-    const cors = require('cors')
+                    @Required Hooks Imported 
+                    const bodyParser = require('body-parser')
+                    const cors = require('cors')
 
-    app.use(cors())
-    app.use(bodyParser.json())
+                    app.use(cors())
+                    app.use(bodyParser.json())
 
-    @Receive & Save to DB Operation..
+                    @Receive & Save to DB Operation..
 
-    client.connect(err => {
-    const collection = client.db("burjarab").collection("booking");
+                    client.connect(err => {
+                    const collection = client.db("burjarab").collection("booking");
 
-        app.post("/book",(req,res)=>{
-            collection.insertOne(req.body)
-            .then(result=>res.send(result.insertedCount>0))
-        })
-    })
+                        app.post("/book",(req,res)=>{
+                            collection.insertOne(req.body)
+                            .then(result=>res.send(result.insertedCount>0))
+                        })
+                    })
 
 Read Data From Backend.......
 
