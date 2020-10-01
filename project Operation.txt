@@ -116,8 +116,7 @@ Create JWT & Set in session Strage :
 
 
 @ ENV (Environmental Varriable Setup)
-
-command: npm install dotenv
+        command: npm install dotenv
 
 @Data Setup in ENV  
     DB_NAME=burjarab
