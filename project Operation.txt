@@ -119,6 +119,20 @@ Create JWT & Set in session Strage :
 
 command: npm install dotenv
 
+@Data Setup in ENV  
+    DB_NAME=burjarab
+    USER_NAME=burj-arab
+    PASSWORD=ghjjNsVguJ5UmRu0
+    COLLECTION=booking
+
+@Data access From Environmental
+    
+    require('dotenv').config()
+    console.log(process.env.DB_NAME)
+
+
+
+
 
 
 
